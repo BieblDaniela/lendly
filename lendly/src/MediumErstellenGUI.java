@@ -39,7 +39,7 @@ public class MediumErstellenGUI extends JFrame{
         GridBagConstraints c = new GridBagConstraints();
 
         //Überschrift
-        JLabel lbl_ueberschrift  = new JLabel("Hier können Sie ein Medium erstellen.");
+        lbl_ueberschrift  = new JLabel("Hier können Sie ein Medium erstellen.");
         c.gridx = 0;
         c.gridy = 0;
         c.gridwidth = 2; 
@@ -49,7 +49,7 @@ public class MediumErstellenGUI extends JFrame{
         this.add(lbl_ueberschrift, c);
 
         //Titel
-        JLabel lbl_titel = new JLabel("Titel:");
+        lbl_titel = new JLabel("Titel:");
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 1; 
@@ -57,47 +57,47 @@ public class MediumErstellenGUI extends JFrame{
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_titel, c);
 
-        JTextField txt_titel = new JTextField(15);
+        txt_titel = new JTextField(15);
         c.gridx = 1;
         c.gridy = 1;
         c.insets = new Insets(5, 0, 0, 10);
         this.add(txt_titel, c);
 
         //Mediumart
-        JLabel lbl_medium = new JLabel("Mediumart:");
+        lbl_medium = new JLabel("Mediumart:");
         c.gridx = 2;
         c.gridy = 1;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_medium,c);
 
         String[] medium = {Buch, Film, Serien};
-        JComboBox<String> cbo_medium = new JComboBox<>(medium);
+        cbo_medium = new JComboBox<>(medium);
         c.gridx = 3;
         c.gridy = 1;
         c.insets = new Insets(5, 0, 0, 10);
         this.add(cbo_medium, c);
 
         //Herausgeber
-        JLabel lbl_herausgeber = new JLabel("Herausgeber:");
+        lbl_herausgeber = new JLabel("Herausgeber:");
         c.gridx = 0;
         c.gridy = 2;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_herausgeber, c);
 
-        JTextField txt_herausgeber = new JTextField(15);
+        txt_herausgeber = new JTextField(15);
         c.gridx = 1;
         c.gridy = 2;
         c.insets = new Insets(5, 0, 0, 10);
         this.add(txt_herausgeber,c);
 
         //Gebühr
-        JLabel lbl_gebuehren = new JLabel("Gebühren/Wocher:");
+        lbl_gebuehren = new JLabel("Gebühren/Wocher:");
         c.gridx = 2;
         c.gridy = 2;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_gebuehren,c);
 
-        JTextField txt_gebuehren = new JTextField(15);
+        txt_gebuehren = new JTextField(15);
         c.gridx = 3;
         c.gridy = 2;
         c.insets = new Insets(5, 0, 0, 10);
@@ -106,7 +106,7 @@ public class MediumErstellenGUI extends JFrame{
         //Buttons
         MyActionListener mylistener = new MyActionListener();
 
-        JButton btn_speichern = new JButton("Speichern in DB");
+        btn_speichern = new JButton("Speichern in DB");
         c.gridx = 0;
         c.gridy = 3;
         c.gridwidth = 2;
@@ -115,7 +115,7 @@ public class MediumErstellenGUI extends JFrame{
         this.add(btn_speichern, c);
         btn_speichern.addActionListener(mylistener);
         
-        JButton btn_hauptmenue = new JButton("Zurück zum Hauptmenü");
+        btn_hauptmenue = new JButton("Zurück zum Hauptmenü");
         c.gridx = 2;
         c.gridy = 3;
         c.gridwidth = 2;
@@ -137,7 +137,6 @@ public class MediumErstellenGUI extends JFrame{
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == btn_speichern) {
-                System.out.println("test");
                 String titel = txt_titel.getText();
                 String herausgeber = txt_herausgeber.getText();
                 Double gebuehren = Double.parseDouble(txt_gebuehren.getText());

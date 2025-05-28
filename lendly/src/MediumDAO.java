@@ -7,11 +7,10 @@ import javax.swing.JOptionPane;
 public class MediumDAO {
     public void speichereMedium(Medium medium){
 
-        String sql = "INSERT INTO medium (titel, herausgeber, kategorie, gebuehr)  VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO medium (titel, herausgeber, kategorie, gebuehr)  VALUES (?, ?, ?, ?);";
 
             try (Connection conn = DatabaseConnector.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             //2. Schritt: Stmt mit Werten verknüpfen - für jedes Fragezeichen muss ein Wert mitgeschickt
             //            werden.
             // ACHTUNG, je nach Typ muss die richtige Setter-Funktion genutzt werden.
