@@ -3,6 +3,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -159,16 +160,20 @@ public class MediumBearbeitenGUI extends JFrame{
                 boolean existiert = dao.existiertID(id);
                 
                 if (existiert) {
-                    String titel = txt_titel.getText();
-                    String herausgeber = txt_herausgeber.getText();
-                    Double gebuehren = Double.parseDouble(txt_gebuehren.getText());
-                    String kategorie = cbo_medium.getSelectedItem().toString();
+                    if (txt_titel.getText().trim().isEmpty() && txt_herausgeber.getText().trim().isEmpty() 
+                    && txt_gebuehren.getText().trim().isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Sie müssen alle Felder ausfüllen");
+                    }else{
+                        String titel = txt_titel.getText();
+                        String herausgeber = txt_herausgeber.getText();
+                        Double gebuehren = Double.parseDouble(txt_gebuehren.getText());
+                        String kategorie = cbo_medium.getSelectedItem().toString();
 
-                    Medium bearbeitetMedium = new Medium(titel, herausgeber, kategorie, gebuehren);
+                        Medium bearbeitetMedium = new Medium(titel, herausgeber, kategorie, gebuehren);
 
-                    dao.bearbeiteMedium(bearbeitetMedium, id);
+                        dao.bearbeiteMedium(bearbeitetMedium, id);
+                    }
                 }
-
             }else if (e.getSource() == btn_hauptmenue) {
                 dispose();
                 //new StartGUI;
