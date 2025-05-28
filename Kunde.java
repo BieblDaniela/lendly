@@ -3,7 +3,6 @@ public class Kunde {
 
     // Attribute
     String email, telefonnr, nachname, vorname, geburtstag;
-    int kid;
 
     // Konstruktor
     public Kunde() {
@@ -11,13 +10,13 @@ public class Kunde {
     }
     
 
-    public Kunde(String email, String telefonnr, String nachname, String vorname, String geburtstag, int kid) {
+    public Kunde(String vorname, String nachname, String email, String telefonnr, String geburtstag) {
         this.email = email;
         this.telefonnr = telefonnr;
         this.nachname = nachname;
         this.vorname = vorname;
         this.geburtstag = geburtstag;
-        this.kid = kid;
+        
     }
 
     // Getter und Setter
@@ -62,13 +61,8 @@ public class Kunde {
         this.geburtstag = geburtstag;
     }
 
-    public int getKid() {
-        return kid;
-    }
 
-    public void setKid(int kid) {
-        this.kid = kid;
-    }
+   
 
   
     
