@@ -16,7 +16,7 @@ public class KundenkontoDAO {
 
     public void speichereKunde(Kunde kunde) {
 
-        String sql = "INSERT INTO bestellungen (vornam, nachname, email, telefonnr, geburtstag)  VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO kunde (vornam, nachname, email, telefonnr, geburtstag)  VALUES (?, ?, ?, ?, ?)";
 
         //1. Schritt: Verbindung aufbauen
         try (Connection conn = DatabaseConnector.getConnection();
