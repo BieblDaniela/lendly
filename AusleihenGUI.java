@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AusleihenGUI extends JFrame {
 
@@ -29,7 +31,7 @@ public class AusleihenGUI extends JFrame {
         lbl_ueberschrift = new JLabel("Hier können Sie ein Medium ausleihen");
         c.gridx = 0;
         c.gridy = 0;
-        c.gridwidth = 2;
+        c.gridwidth = 4;
         c.gridheight = 1;
         c.anchor = GridBagConstraints.WEST;
         c.insets = new Insets(5, 10, 10, 10);
@@ -39,13 +41,13 @@ public class AusleihenGUI extends JFrame {
         lbl_kid = new JLabel("KundenID:");
         c.gridx = 0;
         c.gridy = 1;
-        c.gridwidth =1;
+        c.gridwidth =2;
         c.gridheight = 1;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_kid, c);
 
         txt_kid = new JTextField(10);
-        c.gridx = 1;
+        c.gridx = 2;
         c.gridy = 1;
         c.insets = new Insets(5, 0, 0, 10);
         this.add(txt_kid,c);
@@ -57,7 +59,7 @@ public class AusleihenGUI extends JFrame {
         this.add(lbl_mid, c);
 
         txt_mid = new JTextField(10);
-        c.gridx = 1;
+        c.gridx = 2;
         c.gridy = 2;
         c.insets = new Insets(5, 0, 0, 10);
         this.add(txt_mid, c);
@@ -66,7 +68,7 @@ public class AusleihenGUI extends JFrame {
         lbl_dauer = new JLabel("Wie lange wollen Sie das Medium ausleihen?");
         c.gridx = 0;
         c.gridy = 3;
-        c.gridwidth = 2;
+        c.gridwidth = 4;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_dauer, c);
 
@@ -75,25 +77,25 @@ public class AusleihenGUI extends JFrame {
         c.gridx = 0;
         c.gridy = 4;
         c.gridwidth = 1;
-        c.insets = new Insets(5, 10, 0, 10);
+        c.insets = new Insets(5, 10, 0, 5);
         this.add(opt_7,c);
 
         opt_14 = new JRadioButton("14 Tage");
         c.gridx = 1;
         c.gridy = 4;
-        c.insets = new Insets(5, 0, 0, 10);
+        c.insets = new Insets(5, 0, 0, 5);
         this.add(opt_14,c);
 
         opt_21 = new JRadioButton("21 Tage");
         c.gridx = 2;
         c.gridy = 4;
-        c.insets = new Insets(5, 0, 0, 10);
+        c.insets = new Insets(5, 0, 0, 5);
         this.add(opt_21,c);
 
         opt_28 = new JRadioButton("28 Tage");
         c.gridx = 3;
         c.gridy = 4;
-        c.insets = new Insets(5, 0, 0, 10);
+        c.insets = new Insets(5, 0, 0, 5);
         this.add(opt_28,c);
 
         dauer.add(opt_7);
@@ -112,7 +114,7 @@ public class AusleihenGUI extends JFrame {
         this.add(btn_ausleihen, c);
         btn_ausleihen.addActionListener(mylistener);
 
-        btn_hauptmenue = new JButton("Bestellen");
+        btn_hauptmenue = new JButton("Zurück zum Hauptmenü");
         c.gridx = 1;
         c.gridy = 5;
         c.insets = new Insets(10, 0, 5, 10);
@@ -122,7 +124,8 @@ public class AusleihenGUI extends JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e){
-                new StartGUI();
+                dispose();
+                //new StartGUI();
             }
         });
         
@@ -132,8 +135,30 @@ public class AusleihenGUI extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            if (e.getSource() == btn_ausleihen){
+                int mid = Integer.parseInt(txt_mid.getText());
+                int kid = Integer.parseInt(txt_mid.getText());
+                String dauer = null;
+                if (opt_7.isSelected()) {
+                    dauer = opt_7.getText();
+                }else if (opt_14.isSelected()) {
+                    dauer = opt_14.getText();
+                }else if (opt_21.isSelected()) {
+                    dauer = opt_21.getText();
+                }else if (opt_28.isSelected()) {
+                    dauer = opt_28.getText();
+                }
+
+
+                Ausleihen ausleihen = new Ausleihen(kid, mid, dauer);
+
+                AusleihenDAO dao = new AusleihenDAO();
+
+                dao.speichereAusleihen(ausleihen);
+            }else if(e.getSource() == btn_hauptmenue){
+                dispose();
+                //new StartGUI();
+            }
         }
     
         
