@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AusleihenGUI extends JFrame {
 
@@ -64,15 +66,76 @@ public class AusleihenGUI extends JFrame {
         lbl_dauer = new JLabel("Wie lange wollen Sie das Medium ausleihen?");
         c.gridx = 0;
         c.gridy = 3;
+        c.gridwidth = 2;
         c.insets = new Insets(5, 10, 0, 10);
         this.add(lbl_dauer, c);
 
         ButtonGroup dauer = new ButtonGroup();
         opt_7 = new JRadioButton("7 Tage");
         c.gridx = 0;
-        c.gridy = 3;
-        c.insets = new Insets(5, 0, 0, 10);
+        c.gridy = 4;
+        c.gridwidth = 1;
+        c.insets = new Insets(5, 10, 0, 10);
         this.add(opt_7,c);
+
+        opt_14 = new JRadioButton("14 Tage");
+        c.gridx = 1;
+        c.gridy = 4;
+        c.insets = new Insets(5, 0, 0, 10);
+        this.add(opt_14,c);
+
+        opt_21 = new JRadioButton("21 Tage");
+        c.gridx = 2;
+        c.gridy = 4;
+        c.insets = new Insets(5, 0, 0, 10);
+        this.add(opt_21,c);
+
+        opt_28 = new JRadioButton("28 Tage");
+        c.gridx = 3;
+        c.gridy = 4;
+        c.insets = new Insets(5, 0, 0, 10);
+        this.add(opt_28,c);
+
+        dauer.add(opt_7);
+        dauer.add(opt_14);
+        dauer.add(opt_21);
+        dauer.add(opt_28);
+
+        //Buttons
+        MyActionListener mylistener = new MyActionListener();
+
+        btn_ausleihen = new JButton("Ausleihen");
+        c.gridx = 0;
+        c.gridy = 5;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(10, 10, 5, 10);
+        this.add(btn_ausleihen, c);
+        btn_ausleihen.addActionListener(mylistener);
+
+        btn_hauptmenue = new JButton("Bestellen");
+        c.gridx = 1;
+        c.gridy = 5;
+        c.insets = new Insets(10, 0, 5, 10);
+        this.add(btn_hauptmenue, c);
+        btn_hauptmenue.addActionListener(mylistener);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e){
+                new StartGUI();
+            }
+        });
+        
+    }
+
+    private class MyActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+        }
+    
         
     }
     
