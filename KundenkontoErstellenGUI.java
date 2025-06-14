@@ -1,7 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -169,15 +168,12 @@ public class KundenkontoErstellenGUI extends JFrame {
                 //In die Datenbank übertragen werden (INSERT INTO ....)
                 dao.speichereKunde(neuerKunde);
             
-                // Bestätigung anzeigen
-                JOptionPane.showMessageDialog(KundenkontoErstellenGUI.this, 
-                    "Kundenkonto erfolgreich erstellt!", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
             } else if (e.getSource() == btn_Ausleihen) {
-                System.out.println("Button geklickt");
                // new AusleihenGUI(); //  Öffnet die Ausleihen-GUI
             } else if (e.getSource() == btn_Zurueck) {
                 // Logik zum Zurückkehren zum Hauptmenü
                 dispose(); // Schließt das aktuelle Fenster
+                //new StartGUI();
                 
             }
         }

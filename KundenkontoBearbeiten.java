@@ -177,13 +177,8 @@ public class KundenkontoBearbeiten extends JFrame{
                 KundenkontoDAO dao = new KundenkontoDAO();
                 //Die Klasse BestellungDaO sorgt dafür, dass die DAten aus dem Bestellobjekt 
                 //In die Datenbank übertragen werden (INSERT INTO ....)
-                dao.speichereKunde(neuerKunde);
-            
-                
+                dao.bearbeiteKunden(neuerKunde, kundenID);
 
-                // Bestätigung anzeigen
-               // JOptionPane.showMessageDialog(KundenkontoErstellenGUI.this, 
-                   // "Kundenkonto erfolgreich erstellt!", "Erfolg", JOptionPane.INFORMATION_MESSAGE);
                 } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Bitte eine gültige Kunden-ID eingeben (nur Zahlen).");
                
