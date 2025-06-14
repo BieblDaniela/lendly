@@ -105,8 +105,9 @@ public class ZurueckgebenGUI extends JFrame {
                 int kid = Integer.parseInt(txt_kid.getText());
                 int mid = Integer.parseInt(txt_mid.getText());
 
-                
+                AusleihenDAO dao = new AusleihenDAO();
 
+                dao.zuerueckgebenAusleihen(kid, mid);
                 
             }else if (e.getSource() == btn_hauptmenue) {
                 dispose();
