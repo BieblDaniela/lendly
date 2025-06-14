@@ -101,6 +101,12 @@ public class ZurueckgebenGUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == btn_zurueckgeben) {
+
+                int kid = Integer.parseInt(txt_kid.getText());
+                int mid = Integer.parseInt(txt_mid.getText());
+
+                
+
                 
             }else if (e.getSource() == btn_hauptmenue) {
                 dispose();
