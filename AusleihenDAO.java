@@ -26,11 +26,11 @@ public class AusleihenDAO {
 
     public void zuerueckgebenAusleihen(int kid, int mid){
 
-        String sql = "DELETE FROM ausleihen WHERE ;";
+        String sql = "DELETE FROM ausleihen WHERE kid = " + kid + "AND mid = " + mid;
 
         try (Connection conn = DatabaseConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
-            
+
                 stmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Medium wurde zurückgegeben.");
         } catch (SQLException e) {
