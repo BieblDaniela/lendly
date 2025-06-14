@@ -24,7 +24,7 @@ public class AusleihenDAO {
         }
     }
 
-    public void zuerueckgebenAusleihen(){
+    public void zuerueckgebenAusleihen(int kid, int mid){
 
         String sql = "DELETE FROM ausleihen WHERE ;";
 
